@@ -10,12 +10,14 @@ code, improve code readability and maintenance.
 
 ## Disclaimer
 
-**For now, this framework is assuming that you are running the tests in a clean
-and fresh environment. Although we take care when creating and removing domains
-and networks, be aware that these tests may affect your system.** 
+**For now, this framework assumes that you are going to run the tests in a fresh
+clean environment, i.e. a VM. If you decide to use your local system, beware
+that execution of the tests may affect your system.** 
 
-For future versions we have plans to integrate this with `lcitool` in order to
-prepare the environment before executing the tests.
+One of the future goals of this framework is to utilize nested virtualization
+technologies and hence make sure an L1 guest is provisioned automatically for
+the tests to be executed in this environment and not tamper with your main
+system.
 
 ## Requirements
 
@@ -72,7 +74,7 @@ If you wish you can run this command under a virtual environment.
  * Clear separation between tests and bootstrap stages: If something fails
    during the setUp() metod execution, your test will be not marked as FAIL,
    instead it will be flagged as ERROR. You can also use some decorators
-   (@cancel_on, @skipUnless, ...) around your test to avoid false positves.
+   (@cancel_on, @skipUnless, ...) around your test to avoid false positives.
 
 ## Running
 
@@ -85,9 +87,9 @@ commands:
 ```
 
 Please note that the Next Runner (nrunner) will be the default runner soon in
-Avocado. So `--test-runner='nrunner'` option will no longer be needed.
+Avocado and so the `--test-runner='nrunner'` option will no longer be needed.
 
-Or, if you prefer, you can call it with `make`:
+Or, if you prefer, you can also execute the tests with `make`:
 
 ```bash
   $ make libvirt-tests
